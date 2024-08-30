@@ -1,0 +1,81 @@
+POST http://localhost:4000/addInventories
+Content-Type: application/json
+ 
+{
+    "proId":"HeritageMilk0020",
+    "brand":"Priya",
+    "proType": "Curd",
+    "proVolume":"100 ML",
+    "proName":"Gold Curd",
+    "proImage":"http://localhost:4000/images/Curd",
+    "proDiscription":"Drink our curd convert like a Bhavani",
+    "price":"17"
+ 
+}
+ 
+###
+PUT http://localhost:4000/addInventories
+Content-Type: application/json
+ 
+{
+    "proId":"PriyaCurd0001",
+    "brand":"Priya",
+    "proType": "Milk",
+    "proVolume":"500 ML",
+    "proName":"Gold Milk",
+    "proImage":"http://localhost:4000/images/Curd",
+    "proDiscription":"Drink our curd convert like a Bhavani",
+    "price":"17"
+ 
+}
+ 
+ 
+###
+GET http://localhost:4000/addInventories
+ 
+###
+POST http://localhost:4000/addClientsDetails
+Content-Type: application/json
+ 
+{
+    "mobNo" : "8889999888",
+    "type" : "business",
+    "city" : "Hyderabad",
+    "name" : "chish",
+    "pwd" : "chishu",
+    "cred" : "10000",
+    "addr" : "hyd",
+    "aadharNo" : "123456789321",
+    "whatsappNo" : "9876532678",
+    "altmobNo" : "32145698678",
+    "branch" : "hyd"
+}
+ 
+###
+GET http://localhost:4000/addClientsDetails
+ 
+ 
+###
+POST http://localhost:4000/addUserClientDetails
+Content-Type: application/json
+ 
+{
+    "mobNo2" : "8889999888",
+    "type2" : "business",
+    "city2" : "Hyderabad",
+    "name2" : "chish",
+    "pwd2" : "chishu",
+    "cred2" : "10000",
+    "branch2" : "hyd",
+    "addr2" : "hyd",
+    "aadharNo2" : "123456789321",
+    "whatsappNo2" : "9876532678",
+    "altmobNo2" : "32145698678"
+   
+}
+ 
+ 
+###
+GET http://localhost:4000/addUserClientDetails
+ 
+ 
