@@ -4,8 +4,6 @@ const {MongoClient} = require('mongodb');
 const bodyParser = require("body-parser")
 const cors = require("cors")
 
-
- 
 app.use(express.json());
 app.use(bodyParser.json())
 app.use(cors())
@@ -17,7 +15,7 @@ const serverDb = async ()=>{
     try{
         await client.connect();
         app.listen(4000, ()=>{
-            console.log("server runing at port 4000 and DB connected");
+            console.log("Server Runing at PORT:4000 and DB connected");
         })
     }catch(e){
         console.log(`error in intialization of server and mongodb ${e.message}`)
