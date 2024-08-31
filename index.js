@@ -79,6 +79,16 @@ app.put("/addInventories", async (request,response) => {
     }
 })
  
+app.delete("/addInventories", async (request,response) => {
+    try {
+        const { proId } = request.body;
+        const filter = { productId: proId };
+        await inventoryEntry.deleteOne(filter);
+        response.send("Successfully deleted Brand Details")
+    } catch (e) {
+        console.log(`Error at Brand DELETE Method ${e.message}`)
+    }
+})
  
  
  

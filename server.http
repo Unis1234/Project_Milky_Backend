@@ -3,8 +3,8 @@ Content-Type: application/json
  
 {
     "proId":"HeritageMilk0020",
-    "brand":"Priya",
-    "proType": "Curd",
+    "brand":"Heritage",
+    "proType": "Milk",
     "proVolume":"100 ML",
     "proName":"Gold Curd",
     "proImage":"http://localhost:4000/images/Curd",
@@ -29,6 +29,13 @@ Content-Type: application/json
  
 }
  
+###
+DELETE http://localhost:4000/addInventories
+Content-Type: application/json
+
+{
+   "proId":"HeritageMilk0020" 
+}
  
 ###
 GET http://localhost:4000/addInventories
