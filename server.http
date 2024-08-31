@@ -38,6 +38,17 @@ Content-Type: application/json
 }
  
 ###
+GET http://localhost:4000/singleInventory
+Content-Type: application/json
+
+{
+   "proId":"VijayaMilk0020" 
+}
+
+
+
+
+###
 GET http://localhost:4000/addInventories
  
 ###

@@ -55,7 +55,19 @@ app.get("/addInventories", async (request,response) =>{
             console.log(`Error at Brand GET Method ${e.message}`)
         }
 })
- 
+
+app.get("/singleInventory", async (request,response) => {
+    try {
+        const brandData = await inventoryEntry.find({ productId: request.body.proId });
+        response.send(brandData)
+    } catch (e) {
+        console.log(`Error at Brand GET Method ${e.message}`)
+    }
+})
+   
+
+
+
 app.put("/addInventories", async (request,response) => {
     try {
         const { proId, brand, proType, proVolume, proName, proImage, proDiscription, price} = request.body;
