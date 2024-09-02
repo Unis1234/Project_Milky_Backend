@@ -3,6 +3,7 @@ const app = express()
 const {MongoClient} = require('mongodb');
 const bodyParser = require("body-parser")
 const cors = require("cors")
+const jwt = require("jsonwebtoken")
 
 app.use(express.json());
 app.use(bodyParser.json())
@@ -26,6 +27,56 @@ serverDb();
  
 const unisDB = client.db("UnisMilkDB")
 const inventoryEntry = unisDB.collection("InventoryEntry")
+
+const superAdmins = unisDB.collection("Super Admins Data")
+
+app.post("/superAdmins", async (request,response) =>{
+    try {
+        const { userNa, pwMilk } = request.body;
+        const adminData = {
+            superUserName: userNa,
+            superUserPassword:  pwMilk
+        }
+        const postData = await superAdmins.insertOne(adminData)
+        response.status(201).json(postData)
+        
+    } catch (e) {
+        console.log(`Error at post superAdmins : ${e.message}`)
+    }
+})
+
+app.post("/superLoginAdmin", async (request,response) =>{
+    try {
+        const {user, pwUser} = request.body
+        const adminsData = await superAdmins.find().toArray();
+        let userCheck;
+        for (let char of adminsData){
+            if (char.superUserName === user && char.superUserPassword === pwUser){
+                userCheck = "User Successfully loged"
+            }
+        }
+        if (userCheck === undefined){
+            response.status(400)
+            response.send("U R username and password is incorrect")
+        }else{
+            const payload = {superUserName:user}
+            const jwtToken = jwt.sign(payload,"GangaSecretToken")
+            response.status(200)
+            response.send({jwtToken})
+        }
+    } catch (e) {
+        console.log(`Error at post superAdmins Login : ${e.message}`)
+    }
+})
+
+app.get('/superAdmins' , async (request,response) =>{
+    try {
+        const adminsData = await superAdmins.find().toArray();
+        response.send(adminsData)
+    } catch (e) {
+        console.log(`Error at GET superAdmins : ${e.message}`)
+    }
+})
  
 app.post("/addInventories", async (request,response) =>{
     try {

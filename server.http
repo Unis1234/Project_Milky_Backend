@@ -1,3 +1,26 @@
+POST http://localhost:4000/superAdmins
+Content-Type: application/json
+ 
+{
+    "userNa":"Aditya",
+    "pwMilk":"unis1234"
+}
+
+###
+POST http://localhost:4000/superLoginAdmin
+Content-Type: application/json
+Accept: application/json
+ 
+{
+    "user":"Ganga",
+    "pwUser":"ganga7702"
+}
+
+
+###
+GET http://localhost:4000/superAdmins
+
+###
 POST http://localhost:4000/addInventories
 Content-Type: application/json
  
