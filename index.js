@@ -69,7 +69,28 @@ app.post("/superLoginAdmin", async (request,response) =>{
     }
 })
 
-app.get('/superAdmins' , async (request,response) =>{
+const authenticateToken = (request, response, next) => {
+    let jwtToken;
+    const authHeader = request.headers["authorization"];
+    if (authHeader !== undefined) {
+      jwtToken = authHeader.split(" ")[1];
+    }
+    if (jwtToken === undefined) {
+      response.status(401);
+      response.send("Invalid JWT Token");
+    } else {
+      jwt.verify(jwtToken, "GangaSecretToken", async (error, payload) => {
+        if (error) {
+          response.status(401);
+          response.send("Invalid JWT Token");
+        } else {
+          next();
+        }
+      });
+    }
+  };
+
+app.get('/superAdmins' , authenticateToken, async (request,response) =>{
     try {
         const adminsData = await superAdmins.find().toArray();
         response.send(adminsData)
@@ -78,7 +99,7 @@ app.get('/superAdmins' , async (request,response) =>{
     }
 })
  
-app.post("/addInventories", async (request,response) =>{
+app.post("/addInventories", authenticateToken, async (request,response) =>{
     try {
         const { proId, brand, proType, proVolume, proName, proImage, proDiscription, price} = request.body;
         const brandData = {
@@ -98,7 +119,7 @@ app.post("/addInventories", async (request,response) =>{
     }
 } )
  
-app.get("/addInventories", async (request,response) =>{
+app.get("/addInventories", authenticateToken, async (request,response) =>{
         try {
             const brandData = await inventoryEntry.find().toArray();
             response.send(brandData)
