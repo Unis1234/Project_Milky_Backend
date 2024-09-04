@@ -19,12 +19,10 @@ Accept: application/json
 
 ###
 GET http://localhost:4000/superAdmins
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdXBlclVzZXJOYW1lIjoiR2FuZ2EiLCJpYXQiOjE3MjUyODAxNzl9.W191AvgXeH2QA0kxe8j_38BemB0NKm7J4IJFisvHSCc
 
 ###
 POST http://localhost:4000/addInventories
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdXBlclVzZXJOYW1lIjoiR2FuZ2EiLCJpYXQiOjE3MjUyODAxNzl9.W191AvgXeH2QA0kxe8j_38BemB0NKm7J4IJFisvHSCc
  
 {
     "proId":"HeritageMilk0020",
@@ -59,7 +57,7 @@ DELETE http://localhost:4000/addInventories
 Content-Type: application/json
 
 {
-   "proId":"AmulCurd0001" 
+   "proId":"0001" 
 }
  
 ###
@@ -75,7 +73,6 @@ Content-Type: application/json
 
 ###
 GET http://localhost:4000/addInventories
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdXBlclVzZXJOYW1lIjoiR2FuZ2EiLCJpYXQiOjE3MjUyODAxNzl9.W191AvgXeH2QA0kxe8j_38BemB0NKm7J4IJFisvHSCc
 
 
  

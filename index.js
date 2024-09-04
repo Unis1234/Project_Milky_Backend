@@ -128,7 +128,7 @@ app.get("/addInventories", authenticateToken, async (request,response) =>{
         }
 })
 
-app.get("/singleInventory", async (request,response) => {
+app.get("/singleInventory",authenticateToken, async (request,response) => {
     try {
         const brandData = await inventoryEntry.find({ productId: request.body.proId });
         response.send(brandData)
@@ -140,7 +140,7 @@ app.get("/singleInventory", async (request,response) => {
 
 
 
-app.put("/addInventories", async (request,response) => {
+app.put("/addInventories",authenticateToken, async (request,response) => {
     try {
         const { proId, brand, proType, proVolume, proName, proImage, proDiscription, price} = request.body;
         const filter = { productId: proId };
@@ -162,7 +162,7 @@ app.put("/addInventories", async (request,response) => {
     }
 })
  
-app.delete("/addInventories", async (request,response) => {
+app.delete("/addInventories",authenticateToken, async (request,response) => {
     try {
         const { proId } = request.body;
         const filter = { productId: proId };
@@ -179,7 +179,7 @@ app.delete("/addInventories", async (request,response) => {
 const clientsEntry = unisDB.collection("ClientsEntry")
 const clientsAddEntry = unisDB.collection("ClientsAddEntry")
  
-app.post("/addClientsDetails", async (request,response) =>{
+app.post("/addClientsDetails",authenticateToken, async (request,response) =>{
     try {
         const { mobNo, type,city, name, pwd, cred, addr, aadharNo, whatsappNo,altmobNo,branch} = request.body;
         const clientsData = {
@@ -206,7 +206,7 @@ app.post("/addClientsDetails", async (request,response) =>{
     }
 } )
  
-app.get("/addClientsDetails", async (request,response) =>{
+app.get("/addClientsDetails",authenticateToken, async (request,response) =>{
     try {
         const clientsData = await clientsEntry.find().toArray();
         const clientsAddData = await clientsAddEntry.find().toArray();
@@ -222,7 +222,7 @@ app.get("/addClientsDetails", async (request,response) =>{
  
 const userclientsEntry = unisDB.collection("UserClientsEntry")
 const userclientsAddEntry = unisDB.collection("UserClientsAddEntry")
-app.post("/addUserClientDetails", async (request,response) =>{
+app.post("/addUserClientDetails",authenticateToken, async (request,response) =>{
     try {
         const { mobNo2, type2,city2, name2, pwd2, cred2,branch2, addr2, aadharNo2, whatsappNo2,altmobNo2} = request.body;
         const userclientsData = {
@@ -250,7 +250,7 @@ app.post("/addUserClientDetails", async (request,response) =>{
     }
 } )
  
-app.get("/addUserClientDetails",async (req, res) => {
+app.get("/addUserClientDetails", authenticateToken, async (req, res) => {
     try {
         const userclientsData = await userclientsEntry.find().toArray();
         const userclientsAddData = await userclientsAddEntry.find().toArray();
